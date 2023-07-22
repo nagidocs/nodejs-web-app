@@ -2,19 +2,23 @@
 pipeline {
    agent any
    stages {
-       stage('Build Code') {
-           steps {
-               sh """
-               echo "Building Artifact"
-               """
-           }
-       }
-      stage('Deploy Code') {
+      stage('Test Code') {
           steps {
-               sh """
+              //  sh """
                echo "Deploying Code"
-               """
           }
       }
+			stage('Build/Push Image') {
+					steps {
+							// sh """
+							echo "Building Artifact"
+					}
+			}
+			stage('Deploy') {
+					steps {
+							// sh """
+							echo "Deploy Code"
+					}
+			}
    }
 }
