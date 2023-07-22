@@ -1,0 +1,111 @@
+name-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
+
+template: |
+  **Notable Changes**
+
+  $CHANGES
+
+  **Full Changelog**: https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
+
+categories:
+  - title: '💥 Breaking Changes'
+    label:
+      - 'breaking-change'
+      - 'semver-major'
+  - title: '🚀 Features & ✨ Enhancements'
+    labels:
+      - 'design-change'
+      - 'enhancement'
+      - 'feature-request'
+  - title: '🐛 Bug Fixes'
+    labels:
+      - 'bug'
+      - 'fix'
+  - title: '🔐 Security Impacting'
+    labels:
+      - 'security'
+  - title: '📖 Documentation Updates'
+    labels:
+      - 'docs'
+  - title: '🛠️ Submodule Updates'
+    labels:
+      - 'submodules'
+  - title: '⬆️ Dependency Updates'
+    label:
+      - 'dependencies'
+  - title: '🧰 Maintenance'
+    labels:
+      - 'optimization'
+
+change-template: >-
+  <ul>
+    <li>
+      $TITLE (#$NUMBER)
+    </li>
+  </ul>
+
+change-title-escapes: '\<*_&@' # Note: @ is added to disable mentions
+
+# Maintenance: Keep labels organized in ascending alphabetical order - easier to scan, identify duplicates, etc.
+version-resolver:
+  major:
+    labels:
+      - 'semver-major'
+      - 'breaking-change'      
+  minor:
+    labels:
+      - 'semver-minor'
+      - 'enhancement'
+      - 'feature-request'
+  patch:
+    labels:
+      - 'semver-patch'
+      - 'non-functional'
+      - 'bug'
+      - 'docs'
+  default: patch
+
+exclude-labels:
+  - 'notes'
+  - 'question'
+  - 'refractor'
+  - 'chore'
+  - 'skip-changelog'
+  - 'optimization'
+
+autolabeler:
+  - label: 'docs'
+    files:
+      - '**/*.md'
+    body:
+      - 'docs:'
+  - label: 'chore'
+    files:
+      - '**/*.yml'
+      - .gitignore
+    body:
+      - 'chore:'
+  - label: 'bug'
+    branch:
+      - '/fix\/.+/'
+    title:
+      - 'Fixed'
+      - 'Fix'
+    body:
+      - 'bug:'
+      - 'fix:'
+  - label: 'enhancement'
+    title:
+      - 'Enhancement'
+      - 'Feature'
+    body:
+      - 'feat:'
+      - 'enhancement:'
+  - label: 'refractor'
+    body:
+      - 'refactor:'
+  - label: 'optimization'
+    body:
+      - 'perf:'
+      - 'refractor:'
