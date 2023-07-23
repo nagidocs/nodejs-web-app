@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('init') {
             steps {
-                echo "Build/install dependencies..."
+                echo "Build/install dependencies...latest 1"
                 sh 'npm install'
             }
         }	   
