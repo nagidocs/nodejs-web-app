@@ -1,5 +1,9 @@
 // Jenkins multibranch pipeline CI pipeline.
 pipeline {
+  environment {
+    BUILD_NUM_ENV = currentBuild.getNumber()
+  }
+
    agent any
    stages {
       stage('init') {
@@ -20,15 +24,14 @@ pipeline {
 						echo "Build and Push docker images"
 							// sh """
 						sh 'node --version'
-						
+						sh 'docker build -t nodejs-web-app:$BUILD_NUM_ENV .'
 						echo "Building Artifact"
 					}
 			}
 			stage('Deploy') {
 					steps {
-							sh 'whoami'
-							sh 'docker images'
-							echo "Deploy Code"
+							sh 'whoami'						
+							echo "Deploy"
 					}
 			}
    }
