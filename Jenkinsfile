@@ -12,6 +12,7 @@ pipeline {
 					steps {
 							// sh """
 						sh 'node --version'
+						sh 'whoami'
 						echo "Building Artifact"
 					}
 			}
