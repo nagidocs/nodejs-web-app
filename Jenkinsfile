@@ -11,7 +11,8 @@ pipeline {
 			stage('Build/Push Image') {
 					steps {
 							// sh """
-							echo "Building Artifact"
+						sh 'node --version'
+						echo "Building Artifact"
 					}
 			}
 			stage('Deploy') {
