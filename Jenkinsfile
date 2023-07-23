@@ -17,7 +17,7 @@ pipeline {
 			}
 			stage('Deploy') {
 					steps {
-							// sh """
+							sh 'docker images'
 							echo "Deploy Code"
 					}
 			}
