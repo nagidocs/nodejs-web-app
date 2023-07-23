@@ -31,7 +31,7 @@ pipeline {
 			stage('Deploy') {
 					steps {
 							echo "Deploy"                            
-                            sh 'export IMAGE_TAG=v$BUILD_NUM_ENV && docker-compose up'						
+                            sh 'export IMAGE_TAG=v$BUILD_NUM_ENV && docker-compose up -d'						
 					}
 			}
    }
