@@ -24,7 +24,7 @@ pipeline {
 						echo "Build and Push docker images"
 							// sh """
 						sh 'node --version'
-						sh 'docker build -t nodejs-web-app:$BUILD_NUM_ENV .'
+						sh 'docker build -t nodejs-web-app:v$BUILD_NUM_ENV .'
 						echo "Building Artifact"
 					}
 			}
