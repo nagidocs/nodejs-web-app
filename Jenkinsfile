@@ -2,14 +2,22 @@
 pipeline {
    agent any
    stages {
+      stage('init') {
+          steps {
+	      echo "Build/install dependencies..."
+              sh 'npm install'
+          }
+      }	   
       stage('Test Code') {
           steps {
-              //  sh """
-               echo "Deploying Code"
+               	  echo "Test app..."
+		  sh 'npm run test'
+               
           }
       }
 			stage('Build/Push Image') {
 					steps {
+						echo "Build and Push docker images"
 							// sh """
 						sh 'node --version'
 						
