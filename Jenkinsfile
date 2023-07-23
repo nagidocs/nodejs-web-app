@@ -12,13 +12,14 @@ pipeline {
 					steps {
 							// sh """
 						sh 'node --version'
-						sh 'whoami'
+						
 						echo "Building Artifact"
 					}
 			}
 			stage('Deploy') {
 					steps {
-							sh 'sudo docker images'
+							sh 'whoami'
+							sh 'docker images'
 							echo "Deploy Code"
 					}
 			}
