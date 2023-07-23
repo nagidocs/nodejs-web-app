@@ -11,12 +11,15 @@ pipeline {
 			stage('Build/Push Image') {
 					steps {
 							// sh """
-							echo "Building Artifact"
+						sh 'node --version'
+						
+						echo "Building Artifact"
 					}
 			}
 			stage('Deploy') {
 					steps {
-							// sh """
+							sh 'whoami'
+							sh 'docker images'
 							echo "Deploy Code"
 					}
 			}
