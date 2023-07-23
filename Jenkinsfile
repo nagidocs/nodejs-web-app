@@ -30,8 +30,8 @@ pipeline {
 			}
 			stage('Deploy') {
 					steps {
-							sh 'whoami'						
 							echo "Deploy"
+                            sh 'docker-compose up --build'						
 					}
 			}
    }
